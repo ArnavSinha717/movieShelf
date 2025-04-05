@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MovieShelf</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-film"></i> MovieShelf</h1>
+    <div class="header-actions">
+      <select id="sortSelect">
+        <option class="Arnav" value="title">Sort by Title</option>
+        <option class="Arnav" value="rating">Sort by Rating</option>
+        <option class="Arnav" value="date">Sort by Date Added</option>
+      </select>
+      <select id="categoryFilter">
+        <option value="">All Categories</option>
+        <option value="favorites">Favorites</option>
+      </select>
+      <button id="themeToggle"><i class="fas fa-adjust"></i> Theme</button>
+      <button id="statsBtn"><i class="fas fa-chart-bar"></i> Stats</button>
+      <button id="addMovieBtn"><i class="fas fa-plus"></i> Add Movie</button>
+    </div>
+  </header>
+
+  <section class="controls">
+    <div class="search-container">
+      <input
+        type="text"
+        id="search"
+        placeholder="Search movies by title or genre..."
+      />
+      <label>
+        <input type="checkbox" id="watchedFilter" /> Show Watched Only
+      </label>
+      <label>
+        <input type="checkbox" id="favoritesFilter" /> Show Favorites Only
+      </label>
+    </div>
+    <div id="stats" class="stats"></div>
+  </section>
+
+  <div id="emptyState" class="empty-state">
+    <p>No movies added yet. Click <strong>+ Add Movie</strong> to get started!</p>
+  </div>
+
+  <section id="movieGrid" class="movie-grid"></section>
+
+  <div id="movieModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">×</span>
+      <h2 id="modalTitle">Add New Movie</h2>
+
+      <label for="movieTitle">Title</label>
+      <input type="text" id="movieTitle" placeholder="Movie title" />
+
+      <label for="movieGenre">Genre</label>
+      <select id="movieGenre">
+        <option value="">Select Genre</option>
+        <option value="Action">Action</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Drama">Drama</option>
+        <option value="Horror">Horror</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Romance">Romance</option>
+        <option value="Thriller">Thriller</option>
+      </select>
+
+      <label for="movieRating">Rating (1–5)</label>
+      <input type="number" id="movieRating" min="1" max="5" placeholder="1-5" />
+
+      <label>
+        <input type="checkbox" id="movieWatched" />
+        Watched
+      </label>
+
+      <label for="watchedDate" id="watchedDateLabel" style="display: none;">Watched Date</label>
+      <input type="date" id="watchedDate" style="display: none;" />
+
+      <label for="moviePoster">Poster</label>
+      <input type="file" id="moviePoster" accept="image/*" />
+
+      <label for="movieCategory">Category</label>
+      <input type="text" id="movieCategory" placeholder="e.g., Must Watch, Family" />
+
+      <label>
+        <input type="checkbox" id="movieFavorite" />
+        Favorite
+      </label>
+
+      <div class="modal-actions">
+        <button id="cancelMovie">Cancel</button>
+        <button id="saveMovie">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="detailsModal" class="modal">
+    <div class="modal-content details-modal">
+      <span class="close" id="closeDetailsModal">×</span>
+      <img id="detailsPoster" class="details-poster" src="" alt="Movie Poster" />
+      <h2 id="detailsTitle"></h2>
+      <p id="detailsGenre"></p>
+      <p id="detailsRating"></p>
+      <p id="detailsWatched"></p>
+      <p id="detailsAdded"></p>
+      <p id="detailsCategory"></p>
+      <button id="shareMovieBtn"><i class="fas fa-share-alt"></i> Share</button>
+    </div>
+  </div>
+
+  <div id="statsModal" class="modal">
+    <div class="modal-content stats-modal">
+      <span class="close" id="closeStatsModal">×</span>
+      <h2>Statistics</h2>
+      <div id="detailedStats"></div>
+    </div>
+  </div>
+
+  <input type="file" id="importFile" style="display: none;" accept=".json" />
+  <script src="script.js"></script>
+</body>
+</html>
